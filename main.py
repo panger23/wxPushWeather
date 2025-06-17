@@ -11,18 +11,13 @@ import os
 
 # 哪天在一起的
 start_date = os.environ['START_DATE']
-print(start_date)
 # 和风天气key
 appKey = os.environ['APP_KEY']
-print(appKey)
 # 生日
 birthday = os.environ['BIRTHDAY']
-print(birthday)
 # 微信公众号的appid和app_secret
 app_id = os.environ["APP_ID"]
-print(app_id)
 app_secret = os.environ["APP_SECRET"]
-print(app_secret)
 # 微信公众号的user_id,多个用;（分号）隔开
 user_ids = os.environ["USER_IDS"]
 # 白天模板id
@@ -51,7 +46,15 @@ params = {
 
 # 根据城市名查找地理位置
 url = "https://ng4nmrv98m.re.qweatherapi.com/v2/city/lookup"
-resp_json = json.loads(requests.get(url, params, headers=headers).text)
+
+if resp.status_code == 200:
+    print("Status Code:", resp.status_code)  # 应该是 200
+    print("Response Text:", resp.text)  # 查看返回的内容
+    resp_json = json.loads(requests.get(url, params, headers=headers).text)
+else:
+    exit(1)  # 退出程序或处理错误
+
+
 city_id = resp_json["location"][0]["id"]
 params["location"] = city_id
 
