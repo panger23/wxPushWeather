@@ -47,8 +47,8 @@ params = {
 # 根据城市名查找地理位置
 url = "https://ng4nmrv98m.re.qweatherapi.com/v2/city/lookup"
 
+resp = requests.get(url, params=params, headers=headers)
 if resp.status_code == 200:
-    resp = requests.get(url, params=params, headers=headers)
     print("Status Code:", resp.status_code)  # 应该是 200
     print("Response Text:", resp.text)  # 查看返回的内容
     resp_json = json.loads(requests.get(url, params, headers=headers).text)
