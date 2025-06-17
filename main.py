@@ -43,30 +43,13 @@ params = {
 }
 
 # 根据城市名查找地理位置
-url = "https://geoapi.qweather.com/v2/city/lookup"
-
-# 打印请求的完整 URL（调试用）
-print("请求URL:", requests.Request("GET", url, params=params).prepare().url)
-
-# 发送请求并捕获异常
-try:
-    response = requests.get(url, params=params, headers=headers)
-    print("状态码:", response.status_code)
-    print("原始响应:", response.text)  # 检查是否为合法 JSON
-    
-    resp_json = response.json()  # 直接解析为 JSON（替代 json.loads）
-    city_id = resp_json["location"][0]["id"]
-    print("获取的 city_id:", city_id)
-except Exception as e:
-    print("请求异常:", str(e))
-
-
+url = "https://ng4nmrv98m.re.qweatherapi.com/v2/city/lookup"
 resp_json = json.loads(requests.get(url, params, headers=headers).text)
 city_id = resp_json["location"][0]["id"]
 params["location"] = city_id
 
 # 根据城市地理位置获取当前实时天气
-url = "https://devapi.qweather.com/v7/weather/now"
+url = "https://ng4nmrv98m.re.qweatherapi.com/v7/weather/now"
 realtime_json = json.loads(requests.get(url, params, headers=headers).text)
 # 实时天气状况
 realtime = realtime_json["now"]
@@ -74,7 +57,7 @@ realtime = realtime_json["now"]
 now_temperature = realtime["temp"] + "℃" + realtime["text"]
 
 # 根据城市地理位置获取3天天气状况
-url = "https://devapi.qweather.com/v7/weather/3d"
+url = "https://ng4nmrv98m.re.qweatherapi.com/v7/weather/3d"
 day_forecast_json = json.loads(requests.get(url, params, headers=headers).text)
 
 # -----------------------今天天气状况-----------------------------
