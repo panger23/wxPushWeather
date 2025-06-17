@@ -11,13 +11,18 @@ import os
 
 # 哪天在一起的
 start_date = os.environ['START_DATE']
+print(start_date)
 # 和风天气key
 appKey = os.environ['APP_KEY']
+print(appKey)
 # 生日
 birthday = os.environ['BIRTHDAY']
+print(birthday)
 # 微信公众号的appid和app_secret
 app_id = os.environ["APP_ID"]
+print(app_id)
 app_secret = os.environ["APP_SECRET"]
+print(app_secret)
 # 微信公众号的user_id,多个用;（分号）隔开
 user_ids = os.environ["USER_IDS"]
 # 白天模板id
@@ -29,10 +34,12 @@ name = os.environ['NAME']
 # 城市
 city = os.environ['CITY']
 
+
 # 当前时间
 today = datetime.now()
 # YYYY年MM月DD日
 today_date = today.strftime("%Y年%m月%d日")
+
 
 
 # 构建请求体
