@@ -53,6 +53,7 @@ if resp.status_code == 200:
     print("Response Text:", resp.text)  # 查看返回的内容
     resp_json = json.loads(requests.get(url, params, headers=headers).text)
 else:
+    print("Status Code:", resp.status_code) 
     exit(1)  # 退出程序或处理错误
 
 
