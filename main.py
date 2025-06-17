@@ -43,7 +43,7 @@ params = {
     "key": appKey,
     "location": city
 }
-
+print(params)
 # 根据城市名查找地理位置
 url = "https://ng4nmrv98m.re.qweatherapi.com/geo/v2/city/lookup"
 
