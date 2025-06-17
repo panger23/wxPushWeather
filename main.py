@@ -42,6 +42,21 @@ params = {
     "location": city
 }
 
+# 打印请求的完整 URL（调试用）
+print("请求URL:", requests.Request("GET", url, params=params).prepare().url)
+
+# 发送请求并捕获异常
+try:
+    response = requests.get(url, params=params, headers=headers)
+    print("状态码:", response.status_code)
+    print("原始响应:", response.text)  # 检查是否为合法 JSON
+    
+    resp_json = response.json()  # 直接解析为 JSON（替代 json.loads）
+    city_id = resp_json["location"][0]["id"]
+    print("获取的 city_id:", city_id)
+except Exception as e:
+    print("请求异常:", str(e))
+
 # 根据城市名查找地理位置
 url = "https://geoapi.qweather.com/v2/city/lookup"
 resp_json = json.loads(requests.get(url, params, headers=headers).text)
